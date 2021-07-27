@@ -1,0 +1,20 @@
+{% extends "users/base.html" %}
+
+{% block title %}
+Iogin
+{% endblock title %}
+
+
+<h1>login page</h1>    
+{% block content %}
+<form action="{% url 'users:main' %}" method='post'>
+    {% csrf_token %}
+    <input class="name-class" type="text" name="username" placeholder="사용자이름 또는 이메일"></input>
+    <input class="password-class" type="password" name="password" placeholder="비밀번호"></input>
+    <input class="submit-class" type="submit" value="로그인"></input>
+</form>
+{% endblock content %}
+
+{% block link %}
+계정이 없으신가요? <a href="{% url 'users:signup' %}">가입하기</a>
+{% endblock link %}

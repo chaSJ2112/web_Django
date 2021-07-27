@@ -1,0 +1,23 @@
+{% extends "users/base.html" %}
+
+{% block title %}
+SignUp
+{% endblock title %}
+{% block content %}
+<form action="{% url 'users:signup' %}" method="post">
+    {% csrf_token %}
+    <div class="text-label">친구들의 사진과 동영상을 보려면 가입하세요.</div>
+    {% for field in form %}
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+    </div>
+    {% endfor %}
+    <input class="submit-class" type="submit" value="가입">
+</form>
+
+{% endblock content %}
+
+{% block link %}
+계정이 있으신가요?<a href="{% url 'users:main' %}">로그인</a>
+{% endblock link %}
